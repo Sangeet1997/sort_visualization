@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sorting simplified</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="gen.css">
+    
+</head>
+<body>
+    <div class = "nav">
+        <h1 class="header"><span class="header-icon">S</span>orting Simplified</h1>
+        
+    </div>
+    <div id="progressbar"></div>
+    <div id="scrollpath" ></div>
+    <div class ="container">
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        <span class="bars"></span>
+        
+    </div>
+    <div class="btns">
+        <button class="btn reset btn-warning">Regen array</button>
+        <br>
+        <div>
+            <button class="sortb btn-group-lg btn btn-dark">Bubble Sort!</button>
+            <button class="sorti btn-group-lg btn btn-dark">Insertion Sort!</button>
+            <button class="sortm btn-group-lg btn btn-dark">Selection Sort!</button>
+        </div>
+        <div>
+            <button class="btn btn-dark shell">Shell Sort!</button>
+            <button class="cocktail btn btn-dark">Cocktail Shaker!!</button>
+            <button class="counting btn btn-dark">Counting Sort!</button>
+            <button class="radix btn btn-dark">Radix Sort!</button>
+        </div>
+    </div>
+    
+    <div class="btns">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control interval" placeholder="Enter the interval of each action">
+            <div class="input-group-append">
+              <button class="btn btn-dark update" type="button" id="button-addon2">Update</button>
+            </div>
+        </div>
+        <div class="container2">
+            <h3>Readme</h3>
+            <ul>
+                <li>Press the "Regen array" button to randomize the array.
+                    <ul>
+                        <li>This button can also be pressed during the execution of an algorithm, this way part of the newly randomized array will be sorted along with the algorithm.</li>
+                    </ul>
+                </li>
+                <li>Press the different sort buttons to sort the array.
+                    <ul><li>Different sort buttons can be pressed one after another to visualize 2 or more algorithms working together at the same time.</li></ul>
+                </li>
+                <li>The text box takes inputs in terms of milliseconds(ms),this will determine time taken in each step during the sorting process.
+                    <ul>
+                        <li>Dont forget to press the update button, values wont update if it is not pressed.</li>
+                        <li>Update can be done when an algorithm is running, to speed up or slow down the process in real time.</li>
+                        <li>Give higher values (around 100ms) for better visualization while running two or more algorithms together.</li>
+                    </ul>
+                </li>
+                <li><span class="bold">Colors</span> used in visualization.
+                    <ul>
+                        <li><span class ="bold">Bubble sort</span> : Scanning and Selected element : <span class="green">Green</span></li>
+                        <li><span class ="bold">Insertion sort</span> : Scanning and Selected element : <span class="red">Red</span></li>
+                        <li><span class ="bold">Selection sort</span> : Scanning and Selected element : <span class="cyan">Cyan</span> | Element which changes place : <span class ="brown">Brown</span></li>
+                        <li><span class ="bold">Shell sort</span> : Scanning and Selected element : <span class="pink">Pink</span> | Gap : <span class="grey">Grey</span></li>
+                        <li><span class ="bold">Cocktail shaker sort</span> : Selected element : <span class="purple">Purple</span></li>
+                        <li><span class ="bold">Counting sort</span> : Scanning : <span class="yellow">Yellow</span></li>
+                        <li><span class ="bold">Radix sort</span> : Scanning : <span class="blue">Blue</span></li>
+
+                    </ul>
+                </li>
+                
+
+            </ul>
+        </div>
+        <div class="container2 info">
+            <p>
+                <h3>Bubble sort </h3>
+                <ul>
+                    <li>Loop through the array, and keep checking two consecutive.</li>
+                    <li>Swap the elements with each other if needed(to arrange in a ascending or descending order).</li>
+                    <li>After looping once the last element of the array will be set as highest or lowest.</li>
+                    <li>loop again but only size-1 times, continue till array is sorted.</li>
+                </ul>
+                <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                    Show Code
+                </button>
+                <br>
+              <div class="collapse" id="collapseExample1">
+                <div class="card card-body container3">
+                <pre>
+                    bubbleSort(array[])
+                    {
+                        int size = array.length;
+                        for (int i = 0; i &lt; size - 1; i++)
+                          for (int j = 0; j &lt; size - i - 1; j++)
+                    
+                            if (array[j] > array[j + 1]) {
+                              int temp = array[j];
+                              array[j] = array[j + 1];
+                              array[j + 1] = temp;
+                            }
+                    }
+                </pre>
+                </div>
+              </div>
+        </div>
+        <div class="container2 info">
+            <p>
+                <h3>Insertion sort </h3>
+                <ul>
+                    <li>First check 2 elements and swap the lowest to the front.</li>
+                    <li>Now check 3 elements and put the 3rd element in the proper possition by swapping.</li>
+                    <li>Now check 4  elements and put the 4th element in the proper possition by swapping.</li>
+                    <li>Continue this till the whole array is sorted.</li>
+                    <li>Every time the front portion of the array is sorted.</li>
+                </ul>
+                <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                    Show Code
+                </button>
+                <br>
+              <div class="collapse" id="collapseExample2">
+                <div class="card card-body container3">
+                    <pre>
+                        sort(int arr[]) 
+                        { 
+                            int n = arr.length; 
+                            for (int i = 1; i &lt; n; ++i) { 
+                                int key = arr[i]; 
+                                int j = i - 1; 
+                    
+                                while (j >= 0 && arr[j] > key) { 
+                                    arr[j + 1] = arr[j]; 
+                                    j = j - 1; 
+                                } 
+                                arr[j + 1] = key; 
+                            } 
+                        } 
+                    </pre>
+                </div>
+              </div>
+        </div>
+        <div class="container2 info">
+            <p>
+                <h3>Selection sort </h3>
+                <ul>
+                    <li>Scan whole array put smallest in first position.</li>
+                    <li>Scan the whole array (except) first and put smallest in second position.</li>
+                    <li>This way move the sorted array boundary and find minimum from unsorted.</li>
+                </ul>
+                <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+                    Show Code
+                </button>
+                <br>
+              <div class="collapse" id="collapseExample3">
+                <div class="card card-body container3">
+                  <pre>
+                    sort(int arr[]) 
+                    { 
+                        int n = arr.length; 
+                  
+                        for (int i = 0; i &lt; n-1; i++) 
+                        { 
+                            int min_idx = i; 
+                            for (int j = i+1; j &lt; n; j++) 
+                                if (arr[j] &lt; arr[min_idx]) 
+                                    min_idx = j; 
+                  
+                            int temp = arr[min_idx]; 
+                            arr[min_idx] = arr[i]; 
+                            arr[i] = temp; 
+                        } 
+                    } 
+                  </pre>
+                </div>
+              </div>
+        </div>
+        <div class="container2 info">
+            <p>
+                <h3>Shell sort </h3>
+                <ul>
+                    <li>Pick a gap of size/2.</li>
+                    <li>Move this gap form the start to end and every time compare the first and last element of the gap , and swap if needed.</li>
+                    <li>Do gap/2 and repeat, till gap = 0.</li>
+                </ul>
+                <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
+                    Show Code
+                </button>
+                <br>
+              <div class="collapse" id="collapseExample4">
+                <div class="card card-body container3">
+                  <pre>
+                    sort(int arr[]) 
+                    { 
+                        int n = arr.length; 
+                        for (int gap = n/2; gap > 0; gap /= 2) 
+                        {  
+                            for (int i = gap; i &lt; n; i += 1) 
+                            {  
+                                int temp = arr[i];  
+                                int j; 
+                                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) 
+                                    arr[j] = arr[j - gap];  
+                                arr[j] = temp; 
+                            } 
+                        } 
+                        return 0; 
+                    } 
+                  </pre>
+                </div>
+              </div>
+        </div>
+        <div class="container2 info">
+            <p>
+                <h3>Cocktail sort</h3>
+                <ul>
+                    <li>This is like bubble sort.</li>
+                    <li>After reaching the end and placing the largest value , start iterating from there to the start and on the way swap elements to place the smallest at start.</li>
+                    <li>Iteration ends at the middle.</li>
+                </ul>
+                <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample5">
+                    Show Code
+                </button>
+                <br>
+              <div class="collapse" id="collapseExample5">
+                <div class="card card-body container3">
+                  <pre>
+                    cocktail_sort(){
+                        int start = 0;
+                        int end = l-1;
+                        unt i = 0;
+                        while(start &lt;= end)
+                        {
+                            if(i%2==0)
+                            {
+                                for(int j = start;j&lt;end;j++)
+                                {
+                                    if(arr[j]>arr[j+1])
+                                    {
+                                        temp = arr[j];
+                                        arr[j] = arr[j+1];
+                                        arr[j+1] = temp;
+                                    }
+                                }
+                                end--;
+                                i++;
+                            }
+                            else
+                            {
+                                for(int j = end;j>start;j--)
+                                {
+                                    if(arr[j] &lt; arr[j-1])
+                                    {
+                                        temp = arr[j];
+                                        arr[j] = arr[j-1];
+                                        arr[j-1] = temp;
+                                    }
+                                }
+                                start++;
+                                i++;
+                            }
+                        }
+                    }
+                  </pre>
+                </div>
+              </div>
+        </div>
+        <div class="container2 info">
+            <p>
+                <h3>Counting sort</h3>
+                <ul>
+                    <li>Make a count array with length = the largest element of the array to be sorted.</li>
+                    <li>Pick each element from the given array and update the count array(keep the count of each element). </li>
+                    <li>Make prefix sum of the count array.</li>
+                    <li>Iterate through the given array , with each value as key of the count array, pick the value from the count array, now using this value as key put the value of the original array in a new output array.</li>
+                    <li>Check code for proper understanding.</li>
+                </ul>
+                <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample6" aria-expanded="false" aria-controls="collapseExample6">
+                    Show Code
+                </button>
+                <br>
+              <div class="collapse" id="collapseExample6">
+                <div class="card card-body container3">
+                  <pre>
+                    counting_sort(){
+                        let arr2 = [];
+                        for(let i = 0;i&lt;=460;i++)
+                            arr2[i] = 0;
+                    
+                        for(let i = 0;i&lt;l;i++)
+                            arr2[arr[i]]++;
+                    
+                        for(let i = 1;i&lt;=460;i++)
+                            arr2[i]=arr2[i-1]+arr2[i];
+                    
+                    
+                        let arr3 = [];
+                        let j = 0;
+                        for(let i = 0;i&lt;l;i++)
+                        {
+                            let val = arr2[arr[i]];
+                            arr3[val] = arr[i];
+                            arr2[arr[i]]--;
+                        }
+                    
+                        for(let i = 0;i&lt;l;i++)
+                            arr[i] = arr3[i+1];
+                    }
+                  </pre>
+                </div>
+              </div>
+        </div>
+        <div class="container2 info">
+            <p>
+                <h3>Radix sort </h3>
+                <ul>
+                    <li>Pick the ones placevalue digit of all elements and perform counting sort.</li>
+                    <li>Do the same with tens , hundreds .... till all the digits of the largest element is covered.</li>
+                    <li>Other stable sorting algorithm can be used inplace of counting sort.</li>
+                </ul>
+                <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample7" aria-expanded="false" aria-controls="collapseExample7">
+                    Show Code
+                </button>
+                <br>
+              <div class="collapse" id="collapseExample7">
+                <div class="card card-body container3">
+                    <pre>
+                    radix_sort()
+                    {
+                        for(let i = 0;i&lt;3;i++)
+                        {
+                            let arr2 = [];
+                            for(let j = 0;j&lt;10;j++)
+                                arr2[j] = 0;
+                            
+                            for(let j = 0;j&lt;l;j++)
+                            {
+                                let digit = Math.floor(arr[j]/(10**i))%10;
+                                arr2[digit]++;
+                            }
+
+                            for(let j = 1;j&lt;10;j++)
+                                arr2[j] = arr2[j]+arr2[j-1];
+                    
+                            let arr3 = [];
+                            for(let j = l-1;j>=0;j--)
+                            {
+                                let digit = Math.floor(arr[j]/(10**i))%10;
+                                let value = arr2[digit];
+                                arr3[value] = arr[j];
+                                arr2[digit]--;
+                            }
+                            for(let j = 0;j&lt;l;j++)
+                            {
+                                arr[j] = arr3[j+1];   
+                            }
+                        }
+                    }
+                </pre>
+                </div>
+              </div>
+        </div>
+        <br><br>
+        
+    </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="gen.js"></script>
+    <script src="scroll.js"></script>
+</body>
+</html>
