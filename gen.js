@@ -1,5 +1,15 @@
 let l = 100;
-let interval = 3;
+let interval = 15;
+
+//generate the bars
+const barsContainer = document.getElementById('barsContainer');
+const numberOfBars = l;
+
+for (let i = 0; i < numberOfBars; i++) {
+    const bar = document.createElement('span');
+    bar.classList.add('bars');
+    barsContainer.appendChild(bar);
+}
 
 // let test = document.querySelector(".test");
 let bars = document.querySelectorAll(".bars");
@@ -13,6 +23,10 @@ let shell = document.querySelector(".shell");
 let cocktail = document.querySelector(".cocktail");
 let counting = document.querySelector(".counting");
 let radix = document.querySelector(".radix");
+let sortMerge = document.querySelector(".merge");
+let sortQuick = document.querySelector(".quick"); 
+let play = document.querySelector(".play");
+
 
 
 //function to await loop
@@ -58,8 +72,25 @@ console.log(arr);
 reset.addEventListener("click",function(){
     randomize();
     setdelay();
+    playSound();
     console.log(arr);
 });
+
+async function playSound(){
+    for(let i = 0;i<l;i++)
+    {
+        
+        bars[i].style.backgroundColor = "green";
+
+        playTone(arr[i]);
+        await delayer(interval);
+        
+        bars[i].style.backgroundColor = "black";
+        
+    }
+}
+
+play.addEventListener("click",playSound);
 
 async function bubble()
 {
@@ -69,6 +100,7 @@ async function bubble()
         {
             bars[j].style.backgroundColor = "green";
             bars[j+1].style.backgroundColor = "green";
+            playTone(arr[j]);
             await delayer(interval);
             if(arr[j]>arr[j+1])
             {
@@ -84,6 +116,7 @@ async function bubble()
             
         }
     }
+    playSound();
 }
 sortb.addEventListener("click",bubble);
 
@@ -99,7 +132,7 @@ async function insertion()
         {
             
             bars[j].style.backgroundColor = "red";
-            
+            playTone(arr[j]);
             await delayer(interval); 
 
             arr[j + 1] = arr[j];  
@@ -116,6 +149,7 @@ async function insertion()
         if(j>=0)
             bars[j].style.backgroundColor = "black";
     }
+    playSound();
 }
 sorti.addEventListener("click",insertion);
 
@@ -127,6 +161,7 @@ async function selection(){
         for(let j = i+1;j<l;j++)
         {
             bars[j].style.backgroundColor = "cyan";
+            playTone(arr[j]);
             await delayer(interval);
             if(arr[j]<arr[minp]){
                 
@@ -145,6 +180,7 @@ async function selection(){
         bars[minp].style.paddingTop = arr[minp]+"px";
         bars[minp].style.backgroundColor = "black";
     }
+    playSound();
 }
 sorts.addEventListener("click",selection);
 
@@ -161,6 +197,7 @@ async function shell_sort(){
                 bars[k].style.backgroundColor = "grey";
             bars[i-gap].style.backgroundColor = "pink";
             bars[i].style.backgroundColor = "pink";
+            playTone(temp);
             await delayer(interval*3);
             for(let k = i-gap;k<=i;k++)
                 bars[k].style.backgroundColor = "black";
@@ -183,6 +220,7 @@ async function shell_sort(){
             bars[j].style.paddingTop = arr[j]+"px";
         }
     }
+    playSound();
 }
 shell.addEventListener("click",shell_sort);
 
@@ -198,6 +236,7 @@ async function cocktail_sort(){
             {
                 bars[j].style.backgroundColor = "purple";
                 bars[j+1].style.backgroundColor = "purple";
+                playTone(arr[j]);
                 await delayer(interval);
 
                 if(arr[j]>arr[j+1])
@@ -220,6 +259,7 @@ async function cocktail_sort(){
             {
                 bars[j].style.backgroundColor = "purple";
                 bars[j-1].style.backgroundColor = "purple";
+                playTone(arr[j]);
                 await delayer(interval);
 
                 if(arr[j]<arr[j-1])
@@ -237,6 +277,7 @@ async function cocktail_sort(){
             i++;
         }
     }
+    playSound();
 }
 cocktail.addEventListener("click",cocktail_sort);
 
@@ -249,7 +290,7 @@ async function counting_sort(){
         arr2[arr[i]]++;
 
         bars[i].style.backgroundColor = "yellow";
-        await delayer(interval);
+        playTone(arr[i]);
         await delayer(interval);
         bars[i].style.backgroundColor = "black";
 
@@ -269,17 +310,20 @@ async function counting_sort(){
         arr2[arr[i]]--;
 
         bars[val-1].style.backgroundColor = "yellow";
-        await delayer(interval*30);
+        playTone(arr[i]);
+        await delayer(interval);
 
         bars[val-1].style.paddingTop = arr[i]+"px";
         bars[val-1].style.backgroundColor = "brown";
-        await delayer(interval*30);
+        playTone(arr[i]);
+        await delayer(interval);
         
         bars[val-1].style.backgroundColor = "black";
     }
 
     for(let i = 0;i<l;i++)
         arr[i] = arr3[i+1];
+    playSound();
 }
 counting.addEventListener("click",counting_sort);
 
@@ -293,6 +337,7 @@ async function radix_sort(){
         for(let j = 0;j<l;j++)
         {
             bars[j].style.backgroundColor = "blue";
+            playTone(arr[j]);
             await delayer(interval);
             let digit = Math.floor(arr[j]/(10**i))%10;
             arr2[digit]++;
@@ -316,16 +361,171 @@ async function radix_sort(){
             bars[j].style.backgroundColor = "blue";
             arr[j] = arr3[j+1];
 
-            await delayer(interval*10);
+            playTone(arr[j]);
+            await delayer(interval);
             bars[j].style.paddingTop = arr[j]+"px";
             bars[j].style.backgroundColor = "violet";
 
-            await delayer(interval*10);
+            playTone(arr[j]);
+            await delayer(interval);
             bars[j].style.backgroundColor = "black";
         }
         
     }
+    playSound();
 }
 radix.addEventListener("click",radix_sort);
 
+async function mergeSort(left, right) {
+    if (left >= right) return;
+    
+    const mid = Math.floor((left + right) / 2);
+    
+    await mergeSort(left, mid);
+    await mergeSort(mid + 1, right);
+    await merge(left, mid, right);
+}
+
+async function merge(left, mid, right) {
+    let n1 = mid - left + 1;
+    let n2 = right - mid;
+
+    let leftArr = new Array(n1);
+    let rightArr = new Array(n2);
+
+    for (let i = 0; i < n1; i++) {
+        leftArr[i] = arr[left + i];
+        bars[left + i].style.backgroundColor = "orange";
+    }
+    
+    for (let i = 0; i < n2; i++) {
+        rightArr[i] = arr[mid + 1 + i];
+        bars[mid + 1 + i].style.backgroundColor = "lightgreen";  
+    }
+
+    // playTone(arr[mid]);
+    await delayer(interval * 2);
+
+    let i = 0, j = 0, k = left;
+
+    while (i < n1 && j < n2) {
+        if (leftArr[i] <= rightArr[j]) {
+            arr[k] = leftArr[i];
+            i++;
+        } else {
+            arr[k] = rightArr[j];
+            j++;
+        }
+
+        bars[k].style.paddingTop = arr[k] + "px";  
+        bars[k].style.backgroundColor = "black";
+        playTone(arr[k]);
+        k++;
+        // playTone(arr[k]);
+        await delayer(interval);
+    }
+
+    while (i < n1) {
+        arr[k] = leftArr[i];
+        bars[k].style.paddingTop = arr[k] + "px";
+        bars[k].style.backgroundColor = "black";
+        i++;
+        playTone(arr[k]);
+        k++;
+        // playTone(arr[k]);
+        await delayer(interval);
+    }
+
+    while (j < n2) {
+        arr[k] = rightArr[j];
+        bars[k].style.paddingTop = arr[k] + "px";
+        bars[k].style.backgroundColor = "black";
+        j++;
+        playTone(arr[k]);
+        k++;
+        // playTone(arr[k]);
+        await delayer(interval);
+    }
+}
+
+ 
+sortMerge.addEventListener("click", async function() {
+    await mergeSort(0, l - 1); 
+    playSound();
+});
+
+async function quickSort(low, high) {
+    if (low < high) {
+        let pi = await partition(low, high);  
+        await quickSort(low, pi - 1);
+        await quickSort(pi + 1, high);
+    }
+}
+
+async function partition(low, high) {
+    let pivot = arr[high];
+    bars[high].style.backgroundColor = "red";
+    let i = low - 1;
+
+    for (let j = low; j < high; j++) {
+        bars[j].style.backgroundColor = "yellow";
+        playTone(arr[j]);
+        await delayer(interval);
+
+        if (arr[j] < pivot) {
+            i++;
+            
+            let temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+
+            bars[i].style.paddingTop = arr[i] + "px";
+            bars[j].style.paddingTop = arr[j] + "px";
+        }
+        bars[j].style.backgroundColor = "black";
+    }
+
+    let temp = arr[i + 1];
+    arr[i + 1] = arr[high];
+    arr[high] = temp;
+
+    bars[i + 1].style.paddingTop = arr[i + 1] + "px";
+    bars[high].style.paddingTop = arr[high] + "px";
+    bars[high].style.backgroundColor = "black";
+    playTone(arr[i + 1]);
+    await delayer(interval);
+
+    return i + 1;
+}
+
+sortQuick.addEventListener("click", async function() {
+    await quickSort(0, l - 1);
+    playSound();
+});
+
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+const gainNode = audioCtx.createGain();
+
+gainNode.gain.setValueAtTime(0.01, audioCtx.currentTime);
+
+gainNode.connect(audioCtx.destination);
+
+function playTone(frequency) {
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    const oscillator = audioCtx.createOscillator();
+
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime((frequency*10), audioCtx.currentTime);
+
+    // oscillator.connect(audioCtx.destination);
+
+    oscillator.connect(gainNode);
+
+    oscillator.start();
+
+    oscillator.stop(audioCtx.currentTime + interval / 1000);
+}
 
